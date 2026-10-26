@@ -1,0 +1,59 @@
+import java.util.Scanner;
+public class DataMahasiswa{
+    static Scanner input = new Scanner(System.in);
+    // Method input data
+    static void inputData(String[][][]m, String[]prodi, String[]kelas){
+        for (int i=0; i<m.length; i++){
+            System.out.print("nama prodi:");
+            prodi[i] = input.nextLine();
+        }
+        for (int j=0; j<kelas.length; j++){
+            System.out.print("nama kelas:");
+            kelas[j] = input.nextLine();
+        }
+        for (int i=0; i<m.length; i++){
+            for (int j=0; j<kelas.length; j++){
+                for (int k=0; k<m[i][j].length; k++){
+                    System.out.print("nama mahasiswa:");
+                    m[i][j][k] = input.nextLine();
+                }
+            }
+        }
+    }
+    // Method tampil data
+    static void tampilData(String[][][]m, String[]prodi, String[]kelas){
+        for (int i=0; i<m.length; i++){
+            System.out.println("\nprodi:" + prodi[i]);
+            for (int j=0; j<kelas.length; j++){
+                System.out.println("kelas:" + kelas[j]);
+                for (int k=0; k<m[i][j].length; k++){
+                    System.out.println(m[i][j][k]);
+                }
+            }
+        }
+    }
+    // Method operasi string
+    static void operasiString(String[][][]m){
+        String nama=m[0][0][0];
+        System.out.println("\n=== OPERASI STRING ===");
+        System.out.println("nama:" + nama);
+        System.out.println("huruf besar:" + nama.toUpperCase());
+        System.out.println("jumlah huruf:" + nama.length());
+        System.out.println("ganti a menjadi o:" + nama.replace('a', 'o'));
+    }
+    public static void main(String[] args){
+        System.out.print("jumlah prodi:");
+        int p = input.nextInt();
+        System.out.print("jumlah kelas:");
+        int k = input.nextInt();
+        System.out.print("jumlah mahasiswa:");
+        int m = input.nextInt();
+        input.nextLine();
+        String[] prodi = new String[p];
+        String[] kelas = new String[k];
+        String[][][] mahasiswa = new String[p][k][m];
+        inputData(mahasiswa, prodi, kelas);
+        tampilData(mahasiswa, prodi, kelas);
+        operasiString(mahasiswa);
+    }
+}
